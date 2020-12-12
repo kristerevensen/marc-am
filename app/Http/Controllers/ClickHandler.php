@@ -49,12 +49,23 @@ class ClickHandler extends Controller
         $click->platform = $data['platform'];
         
         //$click->save();
-
+        
         $camp = new Click();
         $redirect = $camp->get_redirect($id);
-        $redirectURL = $redirect[0];
-        //dd($redirectURL);
-        redirect($redirectURL)->send();
+        if (!$redirect->isEmpty()) { 
+            $redirectURL = $redirect[0];
+    
+            if($redirectURL != null) {
+                redirect($redirectURL)->send();
+            } else {
+                redirect('https://marcam.tech')->send();
+            }
+        } else {
+            redirect('https://marcam.tech')->send();
+        }
+       
+       
+        
 
     }
 
