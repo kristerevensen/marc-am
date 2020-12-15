@@ -48,10 +48,11 @@ class ClickHandler extends Controller
         $click->link_token = $id;
         $click->platform = $data['platform'];
         
-        //$click->save();
+        $click->save();
         
         $camp = new Click();
         $redirect = $camp->get_redirect($id);
+        dd($redirect);
         if (!$redirect->isEmpty()) { 
             $redirectURL = $redirect[0];
     
