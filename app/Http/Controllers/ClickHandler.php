@@ -18,6 +18,7 @@ class ClickHandler extends Controller
 
     public function index($id=false)
     {
+
         if(!$id) {
             redirect('https://marcam.tech')->send();
         } else {
@@ -25,9 +26,9 @@ class ClickHandler extends Controller
         }
     }
 
-    protected function save($id)
+    public function save($id)
     {
-        $click = new Click();
+        
         
         $useragent = $_SERVER['HTTP_USER_AGENT'];
         $data['user_agent'] = $_SERVER['HTTP_USER_AGENT'] ? $_SERVER['HTTP_USER_AGENT'] : null;
@@ -41,7 +42,9 @@ class ClickHandler extends Controller
         } else {
             $data['platform'] = "desktop";
         }
+        dd($data);
 
+        $click = new Click();
         $click->user_agent = $data['user_agent'];
         $click->referrer = $data['referrer'];
         $click->ip = $data['ip'];
