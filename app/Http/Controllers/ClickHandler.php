@@ -42,7 +42,7 @@ class ClickHandler extends Controller
         } else {
             $data['platform'] = "desktop";
         }
-        dd($data);
+       // dd($data);
 
         $click = new Click();
         $click->user_agent = $data['user_agent'];
@@ -55,9 +55,10 @@ class ClickHandler extends Controller
         
         $camp = new Click();
         $redirect = $camp->get_redirect($id);
-        dd($redirect);
+       // dd($redirect);
         if (!$redirect->isEmpty()) { 
             $redirectURL = $redirect[0];
+            //dd($redirectURL);
     
             if($redirectURL != null) {
                 redirect($redirectURL)->send();
